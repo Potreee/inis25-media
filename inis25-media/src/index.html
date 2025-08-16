@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Quicksand&display=swap" rel="stylesheet">
+  <script src='https://cdn.tailwindcss.com/3.2.0'></script>
+  <script src="./tailwind.config.js"></script>
+  <script src="./script.js"></script>
+  <link rel="icon" type="image/png" href="./img/logo-inis25.png" />
+  <title>Media</title>
+  <style>
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+
+    @keyframes shimmerText {
+      0% {
+        background-position: -150% center;
+      }
+
+      100% {
+        background-position: 150% center;
+      }
+    }
+
+    .shimmer-text {
+      background: linear-gradient(120deg,
+          #8b5a2b 0%,
+          #8b5a2b 40%,
+          #fff 48%,
+          #8b5a2b 56%,
+          #8b5a2b 100%);
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: shimmerText 4s linear infinite;
+    }
+
+
+    .animate-teaser {
+      animation: slideInLeft 0.8s ease-out both;
+    }
+
+    .animate-dance {
+      animation: slideInRight 0.8s ease-out both;
+    }
+
+    @media (max-width: 1023px) {
+      .animate-teaser {
+        animation-delay: 0.1s;
+        animation: slideInLeft 0.8s ease-out both;
+      }
+
+      .animate-dance {
+        animation-delay: 0.5s;
+        animation: slideInRight 0.8s ease-out both;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col" style="background: linear-gradient(to bottom, #D2A679, #FFF0C9);">
+  <main class="flex-grow flex flex-col items-center pt-[100px]">
+    <!-- Navbar Desktop -->
+    <nav
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[1756px] h-[80px] bg-[#8B5A2B] rounded-[30px] flex items-center justify-between px-8 hidden lg:flex z-[9999] shadow-lg">
+      <div class="flex items-center gap-3">
+        <img src="./img/logo-inis25.png" alt="Logo Inisiasi" class="w-10 h-10 object-contain" />
+        <div class="text-white text-xl font-pirata tracking-widest">INISIASI
+          FTI UAJY</div>
+      </div>
+      <div class="flex gap-10 font-quicksand">
+        <a href="/"
+          class="text-white text-lg font-bold px-4 py-2 rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Beranda</a>
+        <a href="/peserta"
+          class="text-white text-lg font-bold px-4 py-2 rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Peserta</a>
+        <a href="/media"
+          class="text-white text-lg font-bold px-4 py-2 rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Media</a>
+        <a href="/tugas"
+          class="text-white text-lg font-bold px-4 py-2 rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Tugas</a>
+      </div>
+    </nav>
+    <!-- End Navbar Desktop -->
+
+    <!-- Navbar Mobile -->
+    <div
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[600px] h-[70px] bg-[#8B5A2B] rounded-[20px] flex items-center justify-between px-4 lg:hidden z-[9999] shadow-lg">
+      <div class="flex items-center gap-2">
+        <img src="./img/logo-inis25.png" alt="Logo Inisiasi" class="w-8 h-8 object-contain" />
+        <div class="text-white text-xl font-pirata tracking-widest">INISIASI
+          FTI UAJY</div>
+      </div>
+      <button onclick="toggleMenu()" id="menuButton" class="text-white text-xl font-bold toggle-icon mr-2">
+        ☰
+      </button>
+    </div>
+    <!-- Menu Mobile -->
+    <div id="mobileMenu"
+      class="hidden bg-[#8B5A2B] rounded-[20px] w-[90%] max-w-[600px] fixed left-1/2 transform -translate-x-1/2 mt-3 top-[70px] z-[9998] shadow-lg font-quicksand">
+      <a href="/"
+        class="block text-white text-lg font-bold px-4 py-3 text-center rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Beranda</a>
+      <a href="/peserta"
+        class="block text-white text-lg font-bold px-4 py-3 text-center rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Peserta</a>
+      <a href="/media"
+        class="block text-white text-lg font-bold px-4 py-3 text-center rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Media</a>
+      <a href="/tugas"
+        class="block text-white text-lg font-bold px-4 py-3 text-center rounded-xl hover:bg-white hover:text-[#8B5A2B] transition duration-300">Tugas</a>
+    </div>
+  </main>
+  <!-- End Navbar Mobile -->
+
+  <!-- Main Content -->
+  <section
+    class="w-full text-[#000086] relative flex flex-col justify-center items-center px-4 pt-20 pb-2 sm:pb-6 lg:pb-16">
+    <!-- Judul Utama -->
+    <div class="relative z-20 flex flex-col items-center justify-center mt-0 lg:mt-20 xl:mt-28">
+      <h1 class="shimmer-text text-[28px] sm:text-[38px] md:text-[40px] lg:text-[60px] xl:text-[72px] 
+           -translate-y-20 sm:-translate-y-28 md:-translate-y-20 
+           lg:-translate-y-28 xl:-translate-y-36 
+           font-pirata uppercase">
+        Media
+      </h1>
+    </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-[-40px] sm:mt-[-60px] md:mt-[-80px] lg:mt-[-100px] xl:mt-[-120px] w-full px-4 max-w-6xl">
+      <!-- Teaser  -->
+      <div class="flex flex-col items-center order-1 animate-teaser" style="animation-delay: 0.3s">
+        <div
+          class="bg-[#FFF0C9] text-[#8B5A2B] font-pirata text-2xl mb-4 px-6 py-2 rounded-full shadow-md transition select-none cursor-default">
+          Teaser
+        </div>
+        <div
+          class="w-full max-w-[480px] lg:max-w-[640px] aspect-video bg-gray-300 rounded-lg overflow-hidden shadow-md">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/o1xUr-5RWM0?si=aYk9Lid3XdltTE-Q"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <!-- Batang Tengah -->
+      <div class="relative z-20 flex justify-center items-center order-3 lg:order-2 min-h-[240px]">
+        <img src="./img/batang.png" alt="Batang Tengah"
+          class="absolute top-[24px] left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] md:w-[110px] lg:w-[120px] z-0" />
+        <div class="flex flex-col items-center space-y-4 z-10">
+          <a href="https://twibbon.example.com" target="_blank"
+            class="transform transition-all duration-300 ease-in-out hover:scale-[1.16] active:scale-[1.22] bg-[#8B5A2B] text-[#FFF0C9] font-pirata text-2xl px-6 py-2 rounded-full shadow-md hover:bg-[#FFF0C9] hover:text-[#8B5A2B] text-center">
+            Link Twibbon
+          </a>
+          <a href="https://yelyel.example.com" target="_blank"
+            class="transform transition-all duration-300 ease-in-out hover:scale-[1.16] active:scale-[1.22] bg-[#8B5A2B] text-[#FFF0C9] font-pirata text-2xl px-6 py-2 rounded-full shadow-md hover:bg-[#FFF0C9] hover:text-[#8B5A2B] text-center">
+            Link Yel-Yel
+          </a>
+          <a href="https://jargon.example.com" target="_blank"
+            class="transform transition-all duration-300 ease-in-out hover:scale-[1.16] active:scale-[1.22] bg-[#8B5A2B] text-[#FFF0C9] font-pirata text-2xl px-6 py-2 rounded-full shadow-md hover:bg-[#FFF0C9] hover:text-[#8B5A2B] text-center">
+            Link Jargon
+          </a>
+        </div>
+      </div>
+      <!-- Dance Jingle -->
+      <div class="flex flex-col items-center order-2 lg:order-3 animate-dance" style="animation-delay: 0.6s">
+        <div
+          class="bg-[#FFF0C9] text-[#8B5A2B] font-pirata text-2xl mb-4 px-6 py-2 rounded-full shadow-md transition select-none cursor-default">
+          Dance Jingle
+        </div>
+        <div
+          class="w-full max-w-[480px] lg:max-w-[640px] aspect-video bg-gray-300 rounded-lg overflow-hidden shadow-md">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/o1xUr-5RWM0?si=aYk9Lid3XdltTE-Q"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- End Main Content -->
+
+  <!-- Footer -->
+  <footer
+    class="bg-[#8B5A2B] text-white w-full pt-10 pb-4 font-quicksand text-[0.95rem] leading-relaxed mt-0 sm:mt-0 lg:mt-6">
+    <div class="max-w-7xl mx-auto px-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- INISIASI -->
+      <div>
+        <h2 class="text-lg lg:text-2xl font-pirata tracking-wide mb-1 uppercase">
+          INISIASI FTI UAJY 2025
+        </h2>
+        <p class="text-gray-300 text-sm lg:text-lg font-normal">
+          FAKULTAS TEKNOLOGI INDUSTRI<br>
+          UNIVERSITAS ATMA JAYA YOGYAKARTA
+        </p>
+      </div>
+      <!-- SOSIAL MEDIA -->
+      <div>
+        <h2 class="text-lg lg:text-2xl font-pirata tracking-wide mb-1 uppercase">
+          SOSIAL MEDIA
+        </h2>
+        <ul class="text-gray-300 space-y-1 text-[0.95rem] lg:text-lg font-normal">
+          <li class="flex items-center gap-2">
+            <svg class="w-[17px] h-[17px] lg:w-5 lg:h-5" fill="#ffffff" viewBox="0 0 256 256">
+              <g transform="scale(10.66667,10.66667)">
+                <path
+                  d="M8,3c-2.761,0 -5,2.239 -5,5v8c0,2.761 2.239,5 5,5h8c2.761,0 5,-2.239 5,-5v-8c0,-2.761 -2.239,-5 -5,-5zM18,5c0.552,0 1,0.448 1,1c0,0.552 -0.448,1 -1,1c-0.552,0 -1,-0.448 -1,-1c0,-0.552 0.448,-1 1,-1zM12,7c2.761,0 5,2.239 5,5c0,2.761 -2.239,5 -5,5c-2.761,0 -5,-2.239 -5,-5c0,-2.761 2.239,-5 5,-5zM12,9c-1.65685,0 -3,1.34315 -3,3c0,1.65685 1.34315,3 3,3c1.65685,0 3,-1.34315 3,-3c0,-1.65685 -1.34315,-3 -3,-3z" />
+              </g>
+            </svg>
+            <a href="https://www.instagram.com/inisiasi_ftiuajy/" target="_blank" class="hover:text-white">
+              Instagram
+            </a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-[17px] h-[17px] lg:w-5 lg:h-5" fill="#ffffff" viewBox="0 0 256 256">
+              <g transform="scale(10.66667,10.66667)">
+                <path
+                  d="M21.582,6.186c-0.23,-0.86 -0.908,-1.538 -1.768,-1.768c-1.56,-0.418 -7.814,-0.418 -7.814,-0.418c0,0 -6.254,0 -7.814,0.418c-0.86,0.23 -1.538,0.908 -1.768,1.768c-0.418,1.56 -0.418,5.814 -0.418,5.814c0,0 0,4.254 0.418,5.814c0.23,0.86 0.908,1.538 1.768,1.768c1.56,0.418 7.814,0.418 7.814,0.418c0,0 6.254,0 7.814,-0.418c0.861,-0.23 1.538,-0.908 1.768,-1.768c0.418,-1.56 0.418,-5.814 0.418,-5.814c0,0 0,-4.254 -0.418,-5.814zM10,15.464v-6.928l6,3.464z" />
+              </g>
+            </svg>
+            <a href="https://www.youtube.com/@inisiasiftiuajy" target="_blank" class="hover:text-white">
+              YouTube
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- MAPS -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="w-full h-40 rounded overflow-hidden mb-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.098128168296!2d110.41612909999999!3d-7.7794195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59f1fb2f2b45%3A0x20986e2fe9c79cdd!2sUniversitas%20Atma%20Jaya%20Yogyakarta%20-%20Kampus%203%20Gedung%20Bonaventura%20Babarsari!5e0!3m2!1sen!2sid!4v1753247303991!5m2!1sen!2sid"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="text-gray-300 text-[0.75rem] lg:text-[1rem] font-normal">
+          Jl. Babarsari No.43, Janti, Caturtunggal, Kec. Depok,<br>
+          Kabupaten Sleman, DIY 55281
+        </p>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div
+      class="border-t border-white mt-6 pt-4 text-center text-[10px] sm:text-xs md:text-sm lg:text-base font-bold text-white">
+      ©2025 by Muldok & IT Inisiasi FTI UAJY 2023. All rights reserved.
+    </div>
+  </footer>
+  <!-- End Footer -->
+</body>
+
+</html>
